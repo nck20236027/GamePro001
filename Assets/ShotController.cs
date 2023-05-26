@@ -5,10 +5,11 @@ using UnityEngine;
 public class ShotController : MonoBehaviour
 {
     public float Speed;
+    GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.Enemy = GameObject.Find("EnemyPrefab");
     }
 
     // Update is called once per frame
@@ -21,5 +22,19 @@ public class ShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //Vector2 p1 = transform.position;
+        //Vector2 p2 = this.Enemy.transform.position;
+        //Vector2 dir = p1- p2;
+        //float d = dir.magnitude;
+        //float r1 = 0.5f;
+        //float r2 = 0.5f;
+
+        //if(d <r1+r2)
+        //{
+        //    Destroy (Enemy);
+        //}
+
+
+
     }
 }

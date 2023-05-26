@@ -21,6 +21,7 @@ public class GameDirector : MonoBehaviour
     }
     void Update()
     {
-        //this.hpGauge.
+        //hpGauge -= Time.deltaTime;
+        
     }
 }
