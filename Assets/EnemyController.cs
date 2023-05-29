@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.player = GameObject.Find("Player");
+        //this.player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -20,24 +20,28 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        Vector2 p1 = transform.position;
-        Vector2 p2 = this.player.transform.position;
-        Vector2 dir = p1 - p2;
-        float  d = dir.magnitude;
-        float r1 = 0.5f;
-        float r2 = 0.5f;
-
-        if(d<r1+r2)
+        void OnTriggerEnter2D(Collider2D other)
         {
-            //監督スクリプトにプレイヤーと衝突したことを伝える
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().DecreaseHp();
-
-
-            //衝突した場合
-            Destroy(gameObject);
+            Debug.Log("当たった");
         }
+
+        //Vector2 p1 = transform.position;
+        //Vector2 p2 = this.player.transform.position;
+        //Vector2 dir = p1 - p2;
+        //float  d = dir.magnitude;
+        //float r1 = 0.5f;
+        //float r2 = 0.5f;
+
+        //if(d<r1+r2)
+        //{
+        //    //監督スクリプトにプレイヤーと衝突したことを伝える
+        //    GameObject director = GameObject.Find("GameDirector");
+        //    director.GetComponent<GameDirector>().DecreaseHp();
+
+
+        //    //衝突した場合
+        //    Destroy(gameObject);
+        //}
 
 
     }
