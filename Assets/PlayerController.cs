@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class Playercontroller : MonoBehaviour
 {
+
     // プレイヤーの移動速度
     public float Speed;
     //球のプレハブ
     public GameObject ShotPrefab;
     Rigidbody2D rigid2D;
+    GameObject timer;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
+        Application.targetFrameRate = 60;
+       
 
     }
     //void OnTriggerEnter2D (Collider other)
@@ -29,6 +33,7 @@ public class Playercontroller : MonoBehaviour
         // 方向キーで入力された横軸の値を取得
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+
 
         // 現在位置にx,y の値を加算する
         transform.position += new Vector3(x, y, 0) * Time.deltaTime * Speed;
@@ -49,6 +54,8 @@ public class Playercontroller : MonoBehaviour
         {
             Debug.Log("hit");
             Destroy(other.gameObject);
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
         }
     }
 

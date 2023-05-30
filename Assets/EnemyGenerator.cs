@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,5 +23,6 @@ public class EnemyGenerator : MonoBehaviour
             int px = Random.Range(-7, 5);
             go.transform.position = new Vector3(20,px,0);
         }
+        
     }
 }

@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -10,11 +13,12 @@ public class GameDirector : MonoBehaviour
     GameObject km;
     GameObject hpGauge;
     float time = 0.0f;
-    float hp = 100.0f;
+    //float hp =133333333333333.0f;
+    int speed = 0;
 
     public void HitEnemy()
     {
-        this.hp -= 10.0f;
+        //this.hp -= 0.1f;
     }
     
     // Start is called before the first frame update
@@ -31,11 +35,23 @@ public class GameDirector : MonoBehaviour
     }
     void Update()
     {
-        //this.hpGauge -=0,01666f ;
-        this.time += 0.06f;
+        speed++;
+        if(speed>=6)
+        {
+            this.hpGauge.GetComponent<Image>().fillAmount -= 0.001f;
+            speed = 0;
+        }
+        
+        
+        this.time += 0.6f;
         this.km.GetComponent<TextMeshProUGUI>().text =
-            this.time.ToString("F1")+"km";
-        //this.hpGauge.GetComponent<TextMeshProUGUI>().text =
+            this.time.ToString("00000")+"km";
+        //this.hpGauge.GetComponent<Image>().fillAmount =
         //    this.hp.ToString();
+        if (this.hpGauge.GetComponent<Image>().fillAmount <= 0)
+        {
+            SceneManager.LoadScene("GameOrverScene");
+        }
+
     }
 }
