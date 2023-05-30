@@ -43,10 +43,13 @@ public class Playercontroller : MonoBehaviour
 
 
     }
-    void OnTriggerEnter2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("“–‚½‚Á‚½");
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "EnemyPrefab")
+        {
+            Debug.Log("hit");
+            Destroy(other.gameObject);
+        }
     }
 
 }

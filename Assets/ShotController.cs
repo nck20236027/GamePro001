@@ -12,6 +12,15 @@ public class ShotController : MonoBehaviour
         this.Enemy = GameObject.Find("EnemyPrefab");
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "EnemyPrefab")
+        {
+            Debug.Log("ShotHIt");
+            Destroy(other.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +31,7 @@ public class ShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
         //Vector2 p1 = transform.position;
         //Vector2 p2 = this.Enemy.transform.position;
         //Vector2 dir = p1- p2;
