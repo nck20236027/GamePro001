@@ -27,10 +27,19 @@ public class Playercontroller : MonoBehaviour
     //    Destroy(other.gameObject);
     //}
 
-    // Update is called once per frame
+
+
+
+    //private Vector2 mousePos;
+    //private Vector2 target;
+    int i = 10;
+
     void Update()
     {
         this.rigid2D= GetComponent<Rigidbody2D>();
+        //mousePos=Input.mousePosition;
+        //target = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+        //transform.LookAt(target);
         // 方向キーで入力された横軸の値を取得
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -54,8 +63,10 @@ public class Playercontroller : MonoBehaviour
 
 
         //マウスボタンがクリックされたら球を発射
-        if(Input.GetMouseButtonDown(0))
+       //球は１０回までしか打てない
+        if(Input.GetMouseButtonDown(0)&&i>0)
         {
+            i--;
             Instantiate(ShotPrefab,transform.position,Quaternion.identity); 
 
         }
@@ -74,6 +85,21 @@ public class Playercontroller : MonoBehaviour
             Destroy(other.gameObject);
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
+        }
+        if (other.gameObject.tag == "Boss") 
+        {
+            GetComponent<GameDirector>().DecreaseHp();
+            Debug.Log("ボスヒット");
+            Destroy(other.gameObject);
+            GameObject director = GameObject.Find("GameDirector");
+            //for (int i = 0; i < 5;++i)
+            //{
+            //    for (int j = 4; j <= i;)
+            //    {
+            //        Destroy(other.gameObject);
+                    
+            //    }
+            //}
         }
     }
 
