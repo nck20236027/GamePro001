@@ -20,7 +20,7 @@ public class EnemyGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(EnemyPrefab);
-            int px = Random.Range(-7, 5);
+            int px = Random.Range(-4, 5);
             go.transform.position = new Vector3(20,px,0);
         }
         

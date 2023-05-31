@@ -12,12 +12,13 @@ public class Playercontroller : MonoBehaviour
     public GameObject ShotPrefab;
     Rigidbody2D rigid2D;
     GameObject timer;
+    Animator anim;
 
-    
+
     void Start()
     {
         Application.targetFrameRate = 60;
-       
+       anim= GetComponent<Animator>();
 
     }
     //void OnTriggerEnter2D (Collider other)
@@ -34,6 +35,19 @@ public class Playercontroller : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        if (y == 0)
+        {
+            anim.Play("Player Animation");
+        }
+        else if (y >0)
+        {
+            anim.Play("up Animation");
+        }
+        else if (y <0)
+        {
+            anim.Play("DownrrAnimation");
+        }
+
 
         // Œ»ÝˆÊ’u‚Éx,y ‚Ì’l‚ð‰ÁŽZ‚·‚é
         transform.position += new Vector3(x, y, 0) * Time.deltaTime * Speed;
@@ -44,6 +58,10 @@ public class Playercontroller : MonoBehaviour
         {
             Instantiate(ShotPrefab,transform.position,Quaternion.identity); 
 
+        }
+        if(Input.GetKeyDown (KeyCode.Escape))
+        {
+            ////////////////////////
         }
 
 

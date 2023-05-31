@@ -10,6 +10,14 @@ public class EnemyController : MonoBehaviour
     {
         //this.player = GameObject.Find("Player");
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Shot")
+        {
+            
+            Destroy(other.gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
