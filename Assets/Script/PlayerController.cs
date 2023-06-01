@@ -13,13 +13,14 @@ public class Playercontroller : MonoBehaviour
     Rigidbody2D rigid2D;
     GameObject timer;
     Animator anim;
+    GameObject director;
 
 
     void Start()
     {
         Application.targetFrameRate = 60;
        anim= GetComponent<Animator>();
-
+        director = GameObject.Find("GameDirector");
     }
     //void OnTriggerEnter2D (Collider other)
     //{
@@ -67,8 +68,8 @@ public class Playercontroller : MonoBehaviour
         if(Input.GetMouseButtonDown(0)&&i>0)
         {
             i--;
-            Instantiate(ShotPrefab,transform.position,Quaternion.identity); 
-
+            Instantiate(ShotPrefab,transform.position,Quaternion.identity);
+            director.GetComponent<GameDirector>().GetShot();
         }
         if(Input.GetKeyDown (KeyCode.Escape))
         {

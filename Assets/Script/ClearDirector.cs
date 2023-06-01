@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ClearDirector : MonoBehaviour
 {
-    
+    public static
     // Update is called once per frame
     void Update()
     {
@@ -13,6 +13,9 @@ public class ClearDirector : MonoBehaviour
         {
             SceneManager.LoadScene("GameScene");
         }
-        
+        if(Input.GetKeyDown(KeyCode.Z)) 
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
 }

@@ -12,13 +12,14 @@ public class GameDirector : MonoBehaviour
 {
     GameObject km;
     GameObject hpGauge;
+    GameObject ShotCount;
     float time = 0.0f;
-    //float hp =133333333333333.0f;
+    int ShotPP = 10;
     int speed = 0;
 
-    public void HitEnemy()
+    public void GetShot()
     {
-        //this.hp -= 0.1f;
+        this.ShotPP -= 1;
     }
     
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class GameDirector : MonoBehaviour
     {
         this.hpGauge = GameObject.Find("hpGauge");
         this.km = GameObject.Find("0km");
+        this.ShotCount = GameObject.Find("ShotCount");
     }
 
     public void DecreaseHp()
@@ -41,7 +43,8 @@ public class GameDirector : MonoBehaviour
             this.hpGauge.GetComponent<Image>().fillAmount -= 0.001f;
             speed = 0;
         }
-        
+        this.ShotCount.GetComponent<TextMeshProUGUI>().text =
+            this.ShotPP.ToString();
         
         this.time += 0.6f;
         this.km.GetComponent<TextMeshProUGUI>().text =
