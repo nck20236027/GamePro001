@@ -7,6 +7,7 @@ TagManager:
   - EnemyPrefab
   - Shot
   - Boss
+  - kmSSS
   layers:
   - Default
   - TransparentFX

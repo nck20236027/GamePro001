@@ -15,8 +15,11 @@ public class GameDirector : MonoBehaviour
     GameObject ShotCount;
     float time = 0.0f;
     int ShotPP = 10;
-    int speed = 0;
+    int speed = 0; 
+    public Text Scoretext;
+    public static int score = 0;
 
+    
     public void GetShot()
     {
         this.ShotPP -= 1;
@@ -28,6 +31,7 @@ public class GameDirector : MonoBehaviour
         this.hpGauge = GameObject.Find("hpGauge");
         this.km = GameObject.Find("0km");
         this.ShotCount = GameObject.Find("ShotCount");
+        
     }
 
     public void DecreaseHp()
@@ -56,5 +60,10 @@ public class GameDirector : MonoBehaviour
             SceneManager.LoadScene("GameOrverScene");
         }
 
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        score += 10;
+        Scoretext.text = string.Format("Score:{0}", score);
     }
 }
