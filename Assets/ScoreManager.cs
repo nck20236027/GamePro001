@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         scoreLadel.text = "score" + score.ToString("D");
-    }
+    }//クリアシーンにスコアの出し方がわかりませんでした
 
     // Update is called once per frame
     void Update()

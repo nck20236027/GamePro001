@@ -17,7 +17,7 @@ public class GameDirector : MonoBehaviour
     int ShotPP = 10;
     int speed = 0; 
     public Text Scoretext;
-    public static int score = 0;
+    public static float score = Time.time;
 
     
     public void GetShot()
@@ -25,7 +25,11 @@ public class GameDirector : MonoBehaviour
         this.ShotPP -= 1;
     }
     
-    // Start is called before the first frame update
+    public static float getScore()
+    {
+        return score;
+    }//クリアシーンにスコアの出し方がわかりませんでした　
+    
     void Start()
     {
         this.hpGauge = GameObject.Find("hpGauge");
@@ -53,6 +57,8 @@ public class GameDirector : MonoBehaviour
         this.time += 0.6f;
         this.km.GetComponent<TextMeshProUGUI>().text =
             this.time.ToString("00000")+"km";
+        
+
         //this.hpGauge.GetComponent<Image>().fillAmount =
         //    this.hp.ToString();
         if (this.hpGauge.GetComponent<Image>().fillAmount <= 0)
@@ -61,9 +67,5 @@ public class GameDirector : MonoBehaviour
         }
 
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        score += 10;
-        Scoretext.text = string.Format("Score:{0}", score);
-    }
+    
 }

@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ClearDirector : MonoBehaviour
 {
-    public Text SocoreLoad;
-    private int a;
+    public Text ScoreText;
+    float score;
     void Start()
     {
-        //a = (Count.score);
-        
+
+
+        ScoreText.text = string.Format("Score:{0}", score);
+        //クリアシーンにスコアの出し方がわかりませんでした
     }
     void Update()
     {
